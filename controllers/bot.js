@@ -7,7 +7,7 @@ botRouter.post('/', (request, response) => {
     response.send(config.CONFIRMATION_TOKEN);
   else if (data.type === 'message_new') {
     console.log(data.object.user_id);
-    response.send('');
+    response.send('ok');
   } 
   else
     response.send('');
