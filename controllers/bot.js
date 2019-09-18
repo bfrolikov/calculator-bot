@@ -3,8 +3,9 @@ const config = require('../utils/config');
 
 botRouter.post('/', (request, response) => {
   const data = request.body;
-  if (data.type === 'confirmation' && data.group_id === config.GROUP_ID)
-    response.send(config.CONFIRMATION_TOKEN);
+ /* if (data.type === 'confirmation' && data.group_id === config.GROUP_ID)
+    response.send(config.CONFIRMATION_TOKEN);*/
+  console.log(data);
 });
 
 botRouter.get('/', (request, response) => {
