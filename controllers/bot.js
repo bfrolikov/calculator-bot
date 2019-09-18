@@ -6,8 +6,7 @@ botRouter.post('/', (request, response) => {
   if (data.type === 'confirmation' && data.group_id === Number(config.GROUP_ID))
     response.send(config.CONFIRMATION_TOKEN);
   else if (data.type === 'message_new') {
-    const userId = data.object.userId;
-    console.log(userId);
+    console.log(data);
   } 
   else
     response.send('');
