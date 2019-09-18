@@ -15,7 +15,7 @@ botRouter.post('/', (request, response) => {
       .then(result => response.send('ok'));
   }
   else
-    response.send('');
+    response.send('ok');
 });
 
 botRouter.get('/', (request, response) => {

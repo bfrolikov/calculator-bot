@@ -12,7 +12,6 @@ const sendMessage = (userId, message) => {
     message: message
   };
   const resultUrl = httpBuildQuery(query);
-  console.log(`${messageUrl}${resultUrl}`);
   return axios
     .get(`${messageUrl}${resultUrl}`);
 };
