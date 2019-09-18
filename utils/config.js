@@ -1,0 +1,11 @@
+const {
+  PORT,
+  ACCESS_KEY,
+  CONFIRMATION_TOKEN,
+  VK_VESION,
+  GROUP_ID
+} = process.env;
+
+module.exports = {
+  PORT, ACCESS_KEY, CONFIRMATION_TOKEN, VK_VESION, GROUP_ID
+};
