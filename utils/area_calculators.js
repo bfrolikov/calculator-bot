@@ -72,10 +72,23 @@ const pyramidArea = (terms, areaType) => {
     return SSide;
   }
 };
+const prismArea = (terms, areaType) => {
+  const a = Number(terms[2]);
+  const h = Number(terms[3]);
+  if (areaType === 1) { // full
+    const S = 4 * a * h + 2 * a * a;
+    return `${S}`;
+  }
+  else { // side
+    const S = 4 * a * h;
+    return `${S}`;
+  }
+};
 module.exports = {
   coneArea,
   cylinderArea,
   truncatedConeArea,
   truncatedPyramidArea,
-  pyramidArea
+  pyramidArea,
+  prismArea
 };

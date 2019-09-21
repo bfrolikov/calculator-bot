@@ -89,10 +89,16 @@ const getResult = (message) => {
       else
         return calculateArea(terms, areaCalculators.pyramidArea);
     }
-    case '7':
-      break;
+    case '7': {
+      const full = terms[1] === 'П' || terms[1] === 'п';
+      const side = terms[1] === 'Б' || terms[1] === 'б';
+      if ((full || side) && terms.length === 3)
+        return 'Не хватает высоты';
+      else
+        return calculateArea(terms, areaCalculators.prismArea);
+    }
     default:
-      return `Нет такого задания. Их всего 10, а ты ввел(а) ${taskNumber}`;
+      return `Я могу считать только задания с первого по седьмое, а ты ввел(а) ${taskNumber}`;
   }
 };
 

@@ -130,5 +130,26 @@ describe('Task 6', () => {
   test('should not reduce bottom area by 4 where not possible', () => {
     expect(messageProcessor.getResult('6 П 5 2')).toBe('15 + 25*sqrt(3)/4');
   });
-  
+});
+describe('Task 7', () => {
+  test('should check format', () => {
+    expect(messageProcessor.getResult('7 Б')).toBe('Твоё сообщение не соответствует формату. Напиши "Помощь", чтобы узнать, как меня использовать');
+  });
+  test('should check length', () => {
+    expect(messageProcessor.getResult('7 Б 23')).toBe('Не хватает высоты');
+  });
+  test('should check area type', () => {
+    expect(messageProcessor.getResult('7 23 23')).toBe('Укажи, какая площадь тебе нужна - боковых сторон или полная. Напиши "Помощь", чтобы узнать, как меня использовать');
+  });
+  test('should return full area', () => {
+    expect(messageProcessor.getResult('7 П 17 9 ')).toBe('1190');
+  });
+  test('should return side area', () => {
+    expect(messageProcessor.getResult('7 Б 17 9')).toBe('612');
+  });
+});
+
+test('should check task range', () => {
+  expect(messageProcessor.getResult('19 п 12')).toBe('Я могу считать только задания с первого по седьмое, а ты ввел(а) 19');
+  expect(messageProcessor.getResult('8 п 12')).toBe('Я могу считать только задания с первого по седьмое, а ты ввел(а) 8');
 });
