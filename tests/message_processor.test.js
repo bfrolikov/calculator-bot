@@ -83,3 +83,52 @@ describe('Task 4', () => {
     expect(messageProcessor.getResult('4 Б 17 9 14')).toBe('364π');
   });
 });
+
+describe('Task 5', () => {
+  test('should check format', () => {
+    expect(messageProcessor.getResult('5 Б')).toBe('Твоё сообщение не соответствует формату. Напиши "Помощь", чтобы узнать, как меня использовать');
+  });
+  test('should check length', () => {
+    expect(messageProcessor.getResult('5 Б 23')).toBe('Не хватает второй стороны основания и апофемы');
+  });
+  test('should check length', () => {
+    expect(messageProcessor.getResult('5 Б 23 16')).toBe('Не хватает апофемы');
+  });
+  test('should check area type', () => {
+    expect(messageProcessor.getResult('5 23 23')).toBe('Укажи, какая площадь тебе нужна - боковых сторон или полная. Напиши "Помощь", чтобы узнать, как меня использовать');
+  });
+  test('should return full area', () => {
+    expect(messageProcessor.getResult('5 П 17 9 14')).toBe('1098');
+  });
+  test('should return side area', () => {
+    expect(messageProcessor.getResult('5 Б 17 9 14')).toBe('728');
+  });
+});
+
+describe('Task 6', () => {
+  test('should check format', () => {
+    expect(messageProcessor.getResult('6 Б')).toBe('Твоё сообщение не соответствует формату. Напиши "Помощь", чтобы узнать, как меня использовать');
+  });
+  test('should check length', () => {
+    expect(messageProcessor.getResult('6 Б 23')).toBe('Не хватает апофемы');
+  });
+  test('should check area type', () => {
+    expect(messageProcessor.getResult('6 23 23')).toBe('Укажи, какая площадь тебе нужна - боковых сторон или полная. Напиши "Помощь", чтобы узнать, как меня использовать');
+  });
+  test('should reduce side area', () => {
+    expect(messageProcessor.getResult('6 Б 4 1')).toBe('6');
+  });
+  test('should not reduce side area where not possible', () => {
+    expect(messageProcessor.getResult('6 Б 5 5')).toBe('75/2');
+  });
+  test('should reduce bottom area by 4', () => {
+    expect(messageProcessor.getResult('6 П 4 1')).toBe('6 + 4*sqrt(3)');
+  });
+  test('should reduce bottom area by 4', () => {
+    expect(messageProcessor.getResult('6 П 6 2')).toBe('18 + 9*sqrt(3)');
+  });
+  test('should not reduce bottom area by 4 where not possible', () => {
+    expect(messageProcessor.getResult('6 П 5 2')).toBe('15 + 25*sqrt(3)/4');
+  });
+  
+});

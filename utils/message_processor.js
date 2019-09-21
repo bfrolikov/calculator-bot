@@ -70,10 +70,25 @@ const getResult = (message) => {
       }
       return calculateArea(terms, areaCalculators.truncatedConeArea);
     }
-    case '5':
-      break;
-    case '6':
-      break;
+    case '5': {
+      const full = terms[1] === 'П' || terms[1] === 'п';
+      const side = terms[1] === 'Б' || terms[1] === 'б';
+      if (full || side) {
+        if (terms.length === 3)
+          return 'Не хватает второй стороны основания и апофемы';
+        else if (terms.length === 4)
+          return 'Не хватает апофемы';
+      }
+      return calculateArea(terms, areaCalculators.truncatedPyramidArea);
+    }
+    case '6': {
+      const full = terms[1] === 'П' || terms[1] === 'п';
+      const side = terms[1] === 'Б' || terms[1] === 'б';
+      if ((full || side) && terms.length === 3)
+        return 'Не хватает апофемы';
+      else
+        return calculateArea(terms, areaCalculators.pyramidArea);
+    }
     case '7':
       break;
     default:
