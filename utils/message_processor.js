@@ -1,6 +1,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable no-else-return */
 const areaCalculators = require('./area_calculators');
+const commandCheckers = require('./command_checkers');
 
 const regExp = /^\d{1,2}(\s+(П|п|Б|б))?(\s+\d{1,3})+/;
 
@@ -24,6 +25,10 @@ const calculateArea = (terms, calculator) => {
 
 
 const getResult = (message) => {
+  if (commandCheckers.checkHello(message))
+    return 'Привет! Я Бот-Устный Счёт на службе ШКАФА. Напиши "Помощь", чтобы узнать, как мной пользоваться';
+  if (commandCheckers.checkHelp(message))
+    return 'Все просто. Чтобы вычислить ответ на задание, тебе нужно написать мне сообщение в таком формате:\n Сначала номер задания (от 1 до 7), потом, если в задании требуется (в первом не надо), какая площадь тебе нужна: полная (П или п) или боковой поверхности (Б или б). Затем идут числа из задания в том порядке, которые они указаны на листочке.\n Например, сообщение "6 п 19 11" вычислит полную площадь правильной треугольной пирамиды со стороной основания 19 и высотой 11 (это задание 6). Да, и все данные указываются через пробелы.';
   if (!validate(message))
     return 'Твоё сообщение не соответствует формату. Напиши "Помощь", чтобы узнать, как меня использовать';
   const terms = message.split(/\s+/);
