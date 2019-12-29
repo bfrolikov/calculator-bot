@@ -24,8 +24,6 @@ const calculateArea = (terms, calculator) => {
 
 
 const getResult = (message) => {
-  if (!validate(message))
-    return 'Твоё сообщение не соответствует формату. Напиши "Помощь", чтобы узнать, как меня использовать';
   const terms = message.split(/\s+/);
   const taskNumber = terms[0];
   switch (taskNumber) {

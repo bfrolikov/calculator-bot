@@ -10,9 +10,12 @@ botRouter.post('/', (request, response) => {
   else if (data.type === 'message_new') {
     const userId = data.object.user_id;
     const receivedMessage = data.object.body;
-    axiosSender
-      .sendMessage(userId, messageProcessor.getResult(receivedMessage))
-      .then(result => response.send('ok'));
+    if (messageProcessor.validate(receivedMessage))
+      axiosSender
+        .sendMessage(userId, messageProcessor.getResult(receivedMessage))
+        .then(result => response.send('ok'));
+    else
+      response.send('ok');
   }
   else
     response.send('ok');
