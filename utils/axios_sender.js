@@ -8,7 +8,7 @@ const sendMessage = (userId, message) => {
   const query = {
     user_id: userId,
     access_token: config.ACCESS_KEY,
-    v: config.VK_VESION,
+    v: config.VK_VERSION,
     message: message
   };
   const resultUrl = httpBuildQuery(query);
