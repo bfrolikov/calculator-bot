@@ -10,7 +10,6 @@ botRouter.post('/', (request, response) => {
   else if (data.type === 'message_new') {
     const userId = data.object.user_id;
     const receivedMessage = data.object.body;
-    console.log(`New message. Validation result: ${messageProcessor.validate(receivedMessage)}. Processor result: ${messageProcessor.getResult(receivedMessage)}`);
     if (messageProcessor.validate(receivedMessage))
       axiosSender
         .sendMessage(userId, messageProcessor.getResult(receivedMessage))
