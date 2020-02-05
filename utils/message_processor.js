@@ -78,12 +78,11 @@ const getResult = (message) => {
     case '5': {
       const full = terms[1] === 'П' || terms[1] === 'п';
       const side = terms[1] === 'Б' || terms[1] === 'б';
-      if (full || side) 
+      if (full || side)
         if (terms.length === 3)
           return 'Не хватает второй стороны основания и апофемы';
         else if (terms.length === 4)
           return 'Не хватает апофемы';
-      
       return calculateArea(terms, areaCalculators.truncatedPyramidArea);
     }
     case '6': {
@@ -102,8 +101,7 @@ const getResult = (message) => {
       else
         return calculateArea(terms, areaCalculators.prismArea);
     }
-    default:
-    {
+    default:{
       if (taskNumber < 1 || taskNumber > 10)
         return `Нет такого задания. Их всего 10, а ты ввел(а) ${taskNumber}`;
       else

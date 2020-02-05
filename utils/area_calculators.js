@@ -84,7 +84,6 @@ const prismArea = (terms, areaType) => {
     return `${S}`;
   }
 };
-
 module.exports = {
   coneArea,
   cylinderArea,

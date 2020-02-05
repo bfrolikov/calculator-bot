@@ -3,6 +3,7 @@ const checkHello = (message) => {
     return true;
   else
     return false;
+
 };
 
 const checkHelp = (message) => {
